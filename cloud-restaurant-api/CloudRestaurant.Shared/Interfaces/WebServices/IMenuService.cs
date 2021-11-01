@@ -11,6 +11,8 @@ namespace CloudRestaurant.Shared.Interfaces.WebServices
 
         Menu Create(Menu menu);
 
-        Menu GetById(string Id);
+        Menu GetById(string id);
+
+        bool Delete(string id);
     }
 }

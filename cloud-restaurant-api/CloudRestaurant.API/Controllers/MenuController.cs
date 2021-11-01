@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CloudRestaurant.Shared.Models;
 
 namespace CloudRestaurant.API.Controllers
 {
@@ -44,6 +43,19 @@ namespace CloudRestaurant.API.Controllers
                 return NotFound();
 
             return Ok(menu);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete([FromRoute] string id)
+        {
+            if (_MenuService.Delete(id))
+            {
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest("ID not found. Please verify the Menu ID provided");
+            }
         }
     }
 }

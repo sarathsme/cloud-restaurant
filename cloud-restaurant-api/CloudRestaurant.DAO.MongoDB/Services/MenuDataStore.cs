@@ -42,14 +42,33 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             return menuDAO.ToAPIModel();
         }
 
-        public Menu GetById(string Id)
+        public Menu GetById(string id)
         {
             //TODO: Add custom exceptions, null checks
-            ObjectId? objectId = Id.ToObjectId();
-            if (objectId == null) throw new ArgumentNullException(nameof(Id));
+            ObjectId? objectId = id.ToObjectId();
+            if (objectId == null) throw new ArgumentException(nameof(id));
 
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
             return _MenuCollection.Value.Find(filter).FirstOrDefault()?.ToAPIModel();
+        }
+
+        public bool Delete(string id)
+        {
+            //TODO: Add custom exceptions, null checks
+            ObjectId? objectId = id.ToObjectId();
+            if (objectId == null) throw new ArgumentException(nameof(id));
+
+            var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
+            var result = _MenuCollection.Value.DeleteOne(filter);
+
+            if(result.DeletedCount == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
