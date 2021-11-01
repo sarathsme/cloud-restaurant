@@ -39,6 +39,7 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             MenuDAO menuDAO = new MenuDAO(menu);
             _MenuCollection.Value.InsertOne(menuDAO);
 
+            // TODO: Check inserted counted????
             return menuDAO.ToAPIModel();
         }
 
@@ -54,21 +55,28 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 
         public bool Delete(string id)
         {
-            //TODO: Add custom exceptions, null checks
+            //TODO: Add custom exceptions, null checks, refactor??
             ObjectId? objectId = id.ToObjectId();
             if (objectId == null) throw new ArgumentException(nameof(id));
 
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
             var result = _MenuCollection.Value.DeleteOne(filter);
 
-            if(result.DeletedCount == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return result.DeletedCount == 1;
+        }
+
+        public bool Replace(string id, Menu menu)
+        {
+            //TODO: Add custom exceptions, null checks
+            ObjectId? objectId = id.ToObjectId();
+            if (objectId == null) throw new ArgumentException(nameof(id));
+
+            MenuDAO menuDAO = new MenuDAO(menu);
+
+            var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
+            var result = _MenuCollection.Value.ReplaceOne(filter, menuDAO);
+
+            return result.ModifiedCount == 1;
         }
     }
 }

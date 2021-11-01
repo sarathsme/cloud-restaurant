@@ -57,5 +57,18 @@ namespace CloudRestaurant.API.Controllers
                 return BadRequest("ID not found. Please verify the Menu ID provided");
             }
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Replace([FromRoute] string id, [FromBody] Menu menu)
+        {
+            if(_MenuService.Replace(id, menu))
+            {
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest("Unable to update a menu or create a new menu. Please ensure the new Menu ID is not redundant");
+            }
+        }
     }
 }
