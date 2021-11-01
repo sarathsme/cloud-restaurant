@@ -1,4 +1,5 @@
-﻿using CloudRestaurant.Shared.Models;
+﻿using CloudRestaurant.DAO.MongoDB.Utils;
+using CloudRestaurant.Shared.Models;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
@@ -21,14 +22,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             //TODO: Add custom exceptions, null checks
             if(!string.IsNullOrWhiteSpace(menu.Id))
             {
-                if (ObjectId.TryParse(menu.Id, out ObjectId id))
-                {
-                    Id = id;
-                }
-                else
-                {
-                    throw new Exception("Invalid Id");
-                }
+                Id = menu.Id.ToObjectId() ?? throw new ArgumentException("Invalid Menu ID");
             }
                 
             Name = menu.Name;

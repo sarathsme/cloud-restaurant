@@ -1,5 +1,6 @@
 ﻿using CloudRestaurant.DAO.MongoDB.Interfaces;
 using CloudRestaurant.DAO.MongoDB.Models;
+using CloudRestaurant.DAO.MongoDB.Utils;
 using CloudRestaurant.Shared.Interfaces.DataStore;
 using CloudRestaurant.Shared.Models;
 using MongoDB.Bson;
@@ -44,13 +45,10 @@ namespace CloudRestaurant.DAO.MongoDB.Services
         public Menu GetById(string Id)
         {
             //TODO: Add custom exceptions, null checks
-            if(!ObjectId.TryParse(Id, out ObjectId objectId))
-            {
-                throw new Exception("Invalid Id");
-            }
+            ObjectId? objectId = Id.ToObjectId();
+            if (objectId == null) throw new ArgumentNullException(nameof(Id));
 
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
-            //TODO: Add exceptions, not exist then Not found
             return _MenuCollection.Value.Find(filter).FirstOrDefault()?.ToAPIModel();
         }
     }
