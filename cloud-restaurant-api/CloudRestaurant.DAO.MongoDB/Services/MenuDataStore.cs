@@ -34,10 +34,21 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 
         public Menu Create(Menu menu)
         {
+            //TODO: Add exceptions, null checks
             MenuDAO menuDAO = new MenuDAO(menu);
             _MenuCollection.Value.InsertOne(menuDAO);
 
             return menuDAO.ToAPIModel();
+        }
+
+        public Menu GetById(string Id)
+        {
+            //TODO: Add exceptions, null checks
+            ObjectId objectId = ObjectId.Parse(Id);
+
+            var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
+            //TODO: Add exceptions, not exist then Not found
+            return _MenuCollection.Value.Find(filter).FirstOrDefault()?.ToAPIModel();
         }
     }
 }

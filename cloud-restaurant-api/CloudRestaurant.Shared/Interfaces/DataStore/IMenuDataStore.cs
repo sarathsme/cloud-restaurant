@@ -10,5 +10,7 @@ namespace CloudRestaurant.Shared.Interfaces.DataStore
         IEnumerable<Menu> GetAll();
 
         Menu Create(Menu menu);
+
+        Menu GetById(string Id);
     }
 }

@@ -35,5 +35,15 @@ namespace CloudRestaurant.API.Controllers
             //TODO
             //return CreatedAtAction(nameof(Get), new { id =  })
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById([FromRoute] string id)
+        {
+            var menu = _MenuService.GetById(id);
+            if (menu == null)
+                return NotFound();
+
+            return Ok(menu);
+        }
     }
 }

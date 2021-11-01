@@ -19,7 +19,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
         {
             if(!string.IsNullOrWhiteSpace(menu.Id))
             {
-                Id = new ObjectId(menu.Id);
+                Id = ObjectId.Parse(menu.Id);
             }
 
             Name = menu.Name;

@@ -9,6 +9,8 @@ namespace CloudRestaurant.Shared.Interfaces.WebServices
     {
         IEnumerable<Menu> GetAll();
 
-        Menu Create(Menu menu); 
+        Menu Create(Menu menu);
+
+        Menu GetById(string Id);
     }
 }

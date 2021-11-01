@@ -26,5 +26,10 @@ namespace CloudRestaurant.Services.Services
         {
             return _MenuDataStore.Create(menu);
         }
+
+        public Menu GetById(string Id)
+        {
+            return _MenuDataStore.GetById(Id);
+        }
     }
 }
