@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CloudRestaurant.DAO.MongoDB\CloudRestaurant.DAO.MongoDB.csproj" />
     <ProjectReference Include="..\CloudRestaurant.Shared\CloudRestaurant.Shared.csproj" />
   </ItemGroup>
 

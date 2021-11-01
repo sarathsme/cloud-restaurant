@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CloudRestaurant.Shared.Interfaces
+namespace CloudRestaurant.Shared.Interfaces.WebServices
 {
     public interface IMenuService
     {
-        List<Menu> GetAllMenus();
+        IEnumerable<Menu> GetAll();
+
+        Menu Create(Menu menu); 
     }
 }
