@@ -1,6 +1,7 @@
 ﻿using CloudRestaurant.Shared.Models;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,11 +18,19 @@ namespace CloudRestaurant.DAO.MongoDB.Models
 
         public MenuDAO(Menu menu)
         {
+            //TODO: Add custom exceptions, null checks
             if(!string.IsNullOrWhiteSpace(menu.Id))
             {
-                Id = ObjectId.Parse(menu.Id);
+                if (ObjectId.TryParse(menu.Id, out ObjectId id))
+                {
+                    Id = id;
+                }
+                else
+                {
+                    throw new Exception("Invalid Id");
+                }
             }
-
+                
             Name = menu.Name;
             Categories = menu.Categories.Select(category => new CategoryDAO(category));
         }

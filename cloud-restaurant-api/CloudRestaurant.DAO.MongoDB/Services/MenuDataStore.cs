@@ -43,8 +43,11 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 
         public Menu GetById(string Id)
         {
-            //TODO: Add exceptions, null checks
-            ObjectId objectId = ObjectId.Parse(Id);
+            //TODO: Add custom exceptions, null checks
+            if(!ObjectId.TryParse(Id, out ObjectId objectId))
+            {
+                throw new Exception("Invalid Id");
+            }
 
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
             //TODO: Add exceptions, not exist then Not found
