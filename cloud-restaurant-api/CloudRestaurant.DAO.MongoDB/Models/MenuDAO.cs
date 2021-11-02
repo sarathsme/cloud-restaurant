@@ -39,7 +39,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
         {
             return new Menu()
             {
-                Id = Id.ToString(),
+                Id = Id != ObjectId.Empty ? Id.ToString() : null,
                 IsEnabled = IsEnabled,
                 Name = Name,
                 Description = Description,
