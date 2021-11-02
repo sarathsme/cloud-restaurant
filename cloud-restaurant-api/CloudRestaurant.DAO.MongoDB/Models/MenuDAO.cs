@@ -34,8 +34,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             IsEnabled = menu.IsEnabled;             
             Name = menu.Name;
             Description = menu.Description;
-            Categories = menu.Categories.Select(category => new CategoryDAO(category));
-            UncategorizedDishes = menu.UncategorizedDishes.Select(dish => new DishDAO(dish));
+            Categories = menu.Categories?.Select(category => new CategoryDAO(category));
+            UncategorizedDishes = menu.UncategorizedDishes?.Select(dish => new DishDAO(dish));
         }
 
         public Menu ToAPIServiceModel()
@@ -46,8 +46,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
                 IsEnabled = IsEnabled,
                 Name = Name,
                 Description = Description,
-                Categories = Categories.Select(category => category.ToAPIServiceModel()),
-                UncategorizedDishes = UncategorizedDishes.Select(dish => dish.ToAPIServiceModel())
+                Categories = Categories?.Select(category => category.ToAPIServiceModel()),
+                UncategorizedDishes = UncategorizedDishes?.Select(dish => dish.ToAPIServiceModel())
             };
         }
     }
