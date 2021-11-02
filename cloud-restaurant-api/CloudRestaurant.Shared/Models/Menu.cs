@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CloudRestaurant.Shared.Models
 {
@@ -15,6 +12,6 @@ namespace CloudRestaurant.Shared.Models
 
         public bool IsEnabled { get; set; }
 
-        public IEnumerable<Category> Categories { get; set;}
+        public IEnumerable<Category> Categories { get; set; }
     }
 }

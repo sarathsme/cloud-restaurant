@@ -1,7 +1,4 @@
 ﻿using CloudRestaurant.Shared.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CloudRestaurant.DAO.MongoDB.Models
 {
@@ -9,11 +6,17 @@ namespace CloudRestaurant.DAO.MongoDB.Models
     {
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         public PriceDAO Price { get; set; }
+
+        public bool IsAvailable { get; set; }
 
         public DishDAO(Dish dish)
         {
             Name = dish.Name;
+            Description = dish.Description;
+            IsAvailable = dish.IsAvailable;
             Price = new PriceDAO(dish.Price);
         }
 
@@ -21,8 +24,10 @@ namespace CloudRestaurant.DAO.MongoDB.Models
         {
             return new Dish()
             {
-                Name = this.Name,
-                Price = this.Price.ToAPIModel()
+                Name = Name,
+                Description = Description,
+                IsAvailable = IsAvailable,
+                Price = Price.ToAPIModel()
             };
         }
     }
