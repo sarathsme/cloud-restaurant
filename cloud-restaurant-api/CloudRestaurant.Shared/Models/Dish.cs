@@ -15,5 +15,7 @@ namespace CloudRestaurant.Shared.Models
         public decimal? UserRating { get; set; }
 
         public IEnumerable<string> Tags { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

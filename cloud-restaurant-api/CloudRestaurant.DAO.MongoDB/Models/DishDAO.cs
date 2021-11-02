@@ -17,6 +17,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
 
         public IEnumerable<string> Tags { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public DishDAO(Dish dish)
         {
             Name = dish.Name;
@@ -25,6 +27,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             Price = new PriceDAO(dish.Price);
             UserRating = dish.UserRating;
             Tags = dish.Tags;
+            ImageUrl = dish.ImageUrl;
         }
 
         public Dish ToAPIServiceModel()
@@ -36,7 +39,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
                 IsAvailable = IsAvailable,
                 Price = Price.ToAPIServiceModel(),
                 UserRating = UserRating,
-                Tags = Tags
+                Tags = Tags,
+                ImageUrl = ImageUrl
             };
         }
     }
