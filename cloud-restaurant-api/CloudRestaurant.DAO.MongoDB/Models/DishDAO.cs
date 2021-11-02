@@ -1,4 +1,5 @@
 ﻿using CloudRestaurant.Shared.Models;
+using System.Collections.Generic;
 
 namespace CloudRestaurant.DAO.MongoDB.Models
 {
@@ -14,6 +15,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
 
         public decimal? UserRating { get; set; }
 
+        public IEnumerable<string> Tags { get; set; }
+
         public DishDAO(Dish dish)
         {
             Name = dish.Name;
@@ -21,6 +24,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             IsAvailable = dish.IsAvailable;
             Price = new PriceDAO(dish.Price);
             UserRating = dish.UserRating;
+            Tags = dish.Tags;
         }
 
         public Dish ToAPIServiceModel()
@@ -31,7 +35,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
                 Description = Description,
                 IsAvailable = IsAvailable,
                 Price = Price.ToAPIServiceModel(),
-                UserRating = UserRating
+                UserRating = UserRating,
+                Tags = Tags
             };
         }
     }

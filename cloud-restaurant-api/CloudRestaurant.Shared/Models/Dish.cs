@@ -1,4 +1,6 @@
-﻿namespace CloudRestaurant.Shared.Models
+﻿using System.Collections.Generic;
+
+namespace CloudRestaurant.Shared.Models
 {
     public class Dish
     {
@@ -11,5 +13,7 @@
         public Price Price { get; set; }
 
         public decimal? UserRating { get; set; }
+
+        public IEnumerable<string> Tags { get; set; }
     }
 }
