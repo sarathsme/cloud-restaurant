@@ -12,12 +12,15 @@ namespace CloudRestaurant.DAO.MongoDB.Models
 
         public PriceDAO Price { get; set; }
 
+        public decimal? UserRating { get; set; }
+
         public DishDAO(Dish dish)
         {
             Name = dish.Name;
             Description = dish.Description;
             IsAvailable = dish.IsAvailable;
             Price = new PriceDAO(dish.Price);
+            UserRating = dish.UserRating;
         }
 
         public Dish ToAPIServiceModel()
@@ -27,7 +30,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
                 Name = Name,
                 Description = Description,
                 IsAvailable = IsAvailable,
-                Price = Price.ToAPIServiceModel()
+                Price = Price.ToAPIServiceModel(),
+                UserRating = UserRating
             };
         }
     }

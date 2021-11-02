@@ -9,5 +9,7 @@
         public bool IsAvailable { get; set; }
 
         public Price Price { get; set; }
+
+        public decimal? UserRating { get; set; }
     }
 }
