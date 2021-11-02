@@ -20,14 +20,14 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             Price = new PriceDAO(dish.Price);
         }
 
-        public Dish ToAPIModel()
+        public Dish ToAPIServiceModel()
         {
             return new Dish()
             {
                 Name = Name,
                 Description = Description,
                 IsAvailable = IsAvailable,
-                Price = Price.ToAPIModel()
+                Price = Price.ToAPIServiceModel()
             };
         }
     }

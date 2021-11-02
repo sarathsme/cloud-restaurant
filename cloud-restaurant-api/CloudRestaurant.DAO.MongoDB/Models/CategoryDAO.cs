@@ -16,12 +16,12 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             Dishes = category.Dishes.Select(dish => new DishDAO(dish));
         }
 
-        public Category ToAPIModel()
+        public Category ToAPIServiceModel()
         {
             return new Category()
             {
                 Name = this.Name,
-                Dishes = this.Dishes.Select(dish => dish.ToAPIModel())
+                Dishes = this.Dishes.Select(dish => dish.ToAPIServiceModel())
             };
         }
     }

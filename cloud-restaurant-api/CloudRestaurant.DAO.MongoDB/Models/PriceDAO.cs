@@ -17,7 +17,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             UnitDisplayText = price.UnitDisplayText;
         }
 
-        public Price ToAPIModel()
+        public Price ToAPIServiceModel()
         {
             return new Price()
             {

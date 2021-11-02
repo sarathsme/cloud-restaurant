@@ -35,7 +35,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             Categories = menu.Categories.Select(category => new CategoryDAO(category));
         }
 
-        public Menu ToAPIModel()
+        public Menu ToAPIServiceModel()
         {
             return new Menu()
             {
@@ -43,7 +43,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
                 IsEnabled = IsEnabled,
                 Name = Name,
                 Description = Description,
-                Categories = Categories.Select(category => category.ToAPIModel())
+                Categories = Categories.Select(category => category.ToAPIServiceModel())
             };
         }
     }

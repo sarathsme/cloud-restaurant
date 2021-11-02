@@ -30,7 +30,7 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             var filter = Builders<MenuDAO>.Filter.Empty;
             var menuDAOs = _MenuCollection.Value.Find(filter).ToEnumerable();
 
-            return menuDAOs.Select(menu => menu.ToAPIModel());
+            return menuDAOs.Select(menu => menu.ToAPIServiceModel());
         }
 
         public Menu Create(Menu menu)
@@ -40,7 +40,7 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             _MenuCollection.Value.InsertOne(menuDAO);
 
             // TODO: Check inserted counted????
-            return menuDAO.ToAPIModel();
+            return menuDAO.ToAPIServiceModel();
         }
 
         public Menu GetById(string id)
@@ -50,7 +50,7 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             if (objectId == null) throw new ArgumentException(nameof(id));
 
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
-            return _MenuCollection.Value.Find(filter).FirstOrDefault()?.ToAPIModel();
+            return _MenuCollection.Value.Find(filter).FirstOrDefault()?.ToAPIServiceModel();
         }
 
         public bool Delete(string id)
