@@ -8,9 +8,9 @@ namespace CloudRestaurant.DAO.MongoDB.Models
 
         public string Description { get; set; }
 
-        public PriceDAO Price { get; set; }
-
         public bool IsAvailable { get; set; }
+
+        public PriceDAO Price { get; set; }
 
         public DishDAO(Dish dish)
         {
