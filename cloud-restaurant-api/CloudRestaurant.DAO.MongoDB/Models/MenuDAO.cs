@@ -15,6 +15,10 @@ namespace CloudRestaurant.DAO.MongoDB.Models
 
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
+        public bool IsEnabled { get; set; }
+
         public IEnumerable<CategoryDAO> Categories { get; set; }
 
         public MenuDAO(Menu menu)
@@ -24,8 +28,10 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             {
                 Id = menu.Id.ToObjectId() ?? throw new ArgumentException("Invalid Menu ID");
             }
-                
+
+            IsEnabled = menu.IsEnabled;             
             Name = menu.Name;
+            Description = menu.Description;
             Categories = menu.Categories.Select(category => new CategoryDAO(category));
         }
 
@@ -34,8 +40,10 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             return new Menu()
             {
                 Id = Id.ToString(),
-                Name = this.Name,
-                Categories = this.Categories.Select(category => category.ToAPIModel())
+                IsEnabled = IsEnabled,
+                Name = Name,
+                Description = Description,
+                Categories = Categories.Select(category => category.ToAPIModel())
             };
         }
     }
