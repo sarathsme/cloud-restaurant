@@ -30,9 +30,7 @@ namespace CloudRestaurant.API.Controllers
         public IActionResult Create(Menu menu)
         {
             var createdMenu = _MenuService.Create(menu);
-            return Created($"{Request.Path}/{createdMenu.Id}", createdMenu);
-            //TODO
-            //return CreatedAtAction(nameof(Get), new { id =  })
+            return CreatedAtAction(nameof(GetById), new { id = createdMenu.Id }, createdMenu);
         }
 
         [HttpGet("{id}")]
