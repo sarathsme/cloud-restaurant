@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace CloudRestaurant.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class MenuController : ControllerBase
     {
         private readonly IMenuService _MenuService;
