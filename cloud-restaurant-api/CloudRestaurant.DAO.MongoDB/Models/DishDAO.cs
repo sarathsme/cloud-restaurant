@@ -19,6 +19,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
 
         public string ImageUrl { get; set; }
 
+        public List<string> AvailableTimeOfDay { get; set; }
+
         public DishDAO(Dish dish)
         {
             Name = dish.Name;
@@ -28,6 +30,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             UserRating = dish.UserRating;
             Tags = dish.Tags;
             ImageUrl = dish.ImageUrl;
+            AvailableTimeOfDay = dish.AvailableTimeOfDay;
         }
 
         public Dish ToAPIServiceModel()
@@ -40,7 +43,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
                 Price = Price.ToAPIServiceModel(),
                 UserRating = UserRating,
                 Tags = Tags,
-                ImageUrl = ImageUrl
+                ImageUrl = ImageUrl,
+                AvailableTimeOfDay = AvailableTimeOfDay
             };
         }
     }

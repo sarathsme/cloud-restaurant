@@ -17,5 +17,7 @@ namespace CloudRestaurant.Shared.Models
         public IEnumerable<string> Tags { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public List<string> AvailableTimeOfDay { get; set; } 
     }
 }
