@@ -21,6 +21,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
 
         public List<string> AvailableTimeOfDay { get; set; }
 
+        public int WaitingTime { get; set; }
+
         public DishDAO(Dish dish)
         {
             Name = dish.Name;
@@ -31,12 +33,13 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             Tags = dish.Tags;
             ImageUrl = dish.ImageUrl;
             AvailableTimeOfDay = dish.AvailableTimeOfDay;
+            WaitingTime = dish.WaitingTime;
         }
 
         public Dish ToAPIServiceModel()
         {
             return new Dish()
-            {
+            {   
                 Name = Name,
                 Description = Description,
                 IsAvailable = IsAvailable,
@@ -44,7 +47,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
                 UserRating = UserRating,
                 Tags = Tags,
                 ImageUrl = ImageUrl,
-                AvailableTimeOfDay = AvailableTimeOfDay
+                AvailableTimeOfDay = AvailableTimeOfDay,
+                WaitingTime = WaitingTime
             };
         }
     }
