@@ -2,15 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CloudRestaurant.Shared.Interfaces.DataStore
 {
     public interface IDishDataStore
     {
-        bool Create(string menuId, Dish dish);
+        Task<bool> Create(string menuId, Dish dish);
 
-        bool Replace(string menuId, Guid dishId, Dish dish);
+        Task<bool> Replace(string menuId, Guid dishId, Dish dish);
 
-        bool Delete(string menuId, Guid dishId);
+        Task<bool> Delete(string menuId, Guid dishId);
     }
 }

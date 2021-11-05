@@ -4,6 +4,7 @@ using CloudRestaurant.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CloudRestaurant.Services.Services
 {
@@ -16,19 +17,19 @@ namespace CloudRestaurant.Services.Services
             _DishDataStore = dishDataStore;
         }
 
-        public bool Create(string menuId, Dish dish)
+        public async Task<bool> Create(string menuId, Dish dish)
         {
-            return _DishDataStore.Create(menuId, dish);
+            return await _DishDataStore.Create(menuId, dish);
         }
 
-        public bool Update(string menuId, Guid dishId, Dish dish)
+        public async Task<bool> Update(string menuId, Guid dishId, Dish dish)
         {
-            return _DishDataStore.Replace(menuId, dishId, dish);
+            return await _DishDataStore.Replace(menuId, dishId, dish);
         }
 
-        public bool Delete(string menuId, Guid dishId)
+        public async Task<bool> Delete(string menuId, Guid dishId)
         {
-            return _DishDataStore.Delete(menuId, dishId);
+            return await _DishDataStore.Delete(menuId, dishId);
         }
     }
 }

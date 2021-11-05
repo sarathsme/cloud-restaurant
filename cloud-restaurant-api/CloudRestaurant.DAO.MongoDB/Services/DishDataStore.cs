@@ -9,6 +9,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CloudRestaurant.DAO.MongoDB.Services
 {
@@ -16,7 +17,7 @@ namespace CloudRestaurant.DAO.MongoDB.Services
     {
         public DishDataStore(IDBConnection dbConnection) : base(dbConnection) { }
 
-        public bool Create(string menuId, Dish dish)
+        public async Task<bool> Create(string menuId, Dish dish)
         {
             EnsureArg.IsNotNullOrWhiteSpace(menuId, nameof(menuId));
             EnsureArg.IsNotNull(dish, nameof(dish));
@@ -29,12 +30,12 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
             var pushCmd = Builders<MenuDAO>.Update.Push("Dishes", dishDAO);
 
-            var result = _MenuCollection.Value.UpdateOne(filter, pushCmd);
+            var result = await _MenuCollection.Value.UpdateOneAsync(filter, pushCmd);
 
             return result.ModifiedCount == 1;
         }
 
-        public bool Replace(string menuId, Guid dishId, Dish dish)
+        public async Task<bool> Replace(string menuId, Guid dishId, Dish dish)
         {
             EnsureArg.IsNotNullOrWhiteSpace(menuId, nameof(menuId));
             EnsureArg.IsNot(dishId, Guid.Empty, nameof(dishId));
@@ -50,13 +51,13 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 
             var updateCmd = Builders<MenuDAO>.Update.Set("Dishes.$", dishDAO);
 
-            var result = _MenuCollection.Value.UpdateOne(filter, updateCmd);
+            var result = await _MenuCollection.Value.UpdateOneAsync(filter, updateCmd);
 
             // Can't use ModifiedCount as it can be 0, when the input document does not have any differences with matched the doc in the collection
             return result.MatchedCount == 1;
         }
 
-        public bool Delete(string menuId, Guid dishId)
+        public async Task<bool> Delete(string menuId, Guid dishId)
         {
             EnsureArg.IsNotNullOrWhiteSpace(menuId, nameof(menuId));
             EnsureArg.IsNot(dishId, Guid.Empty, nameof(dishId));
@@ -67,7 +68,7 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
             var updateCmd = Builders<MenuDAO>.Update.PullFilter("Dishes", Builders<DishDAO>.Filter.Where(dish => dish.Id == dishId));
 
-            var result = _MenuCollection.Value.UpdateOne(filter, updateCmd);
+            var result = await _MenuCollection.Value.UpdateOneAsync(filter, updateCmd);
 
             return result.ModifiedCount == 1;
         }

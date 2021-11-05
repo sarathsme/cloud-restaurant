@@ -3,6 +3,7 @@ using CloudRestaurant.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CloudRestaurant.API.Controllers.v1
 {
@@ -18,9 +19,9 @@ namespace CloudRestaurant.API.Controllers.v1
         }
 
         [HttpPost]
-        public IActionResult Create([FromRoute] string menuId, [FromBody] Dish dish)
+        public async Task<IActionResult> Create([FromRoute] string menuId, [FromBody] Dish dish)
         {
-            if(_DishService.Create(menuId, dish))
+            if(await _DishService.Create(menuId, dish))
             {
                 return NoContent();
             }
@@ -31,9 +32,9 @@ namespace CloudRestaurant.API.Controllers.v1
         }
 
         [HttpPut("{dishId}")]
-        public IActionResult Update([FromRoute] string menuId, [FromRoute] Guid dishId, [FromBody] Dish dish)
+        public async Task<IActionResult> Update([FromRoute] string menuId, [FromRoute] Guid dishId, [FromBody] Dish dish)
         {
-            if(_DishService.Update(menuId, dishId, dish))
+            if(await _DishService.Update(menuId, dishId, dish))
             {
                 return NoContent();
             }
@@ -44,9 +45,9 @@ namespace CloudRestaurant.API.Controllers.v1
         }
 
         [HttpDelete("{dishId}")]
-        public IActionResult Delete([FromRoute] string menuId, [FromRoute] Guid dishId)
+        public async Task<IActionResult> Delete([FromRoute] string menuId, [FromRoute] Guid dishId)
         {
-            if (_DishService.Delete(menuId, dishId))
+            if (await _DishService.Delete(menuId, dishId))
             {
                 return NoContent();
             }
