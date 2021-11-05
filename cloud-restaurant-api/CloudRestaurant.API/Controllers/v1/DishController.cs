@@ -17,13 +17,12 @@ namespace CloudRestaurant.API.Controllers.v1
             _DishService = dishService;
         }
 
-
         [HttpPost]
-        public IActionResult Post([FromRoute] string menuId, [FromBody] Dish dish)
+        public IActionResult Create([FromRoute] string menuId, [FromBody] Dish dish)
         {
             if(_DishService.Create(menuId, dish))
             {
-                return Ok();
+                return NoContent();
             }
             else
             {
