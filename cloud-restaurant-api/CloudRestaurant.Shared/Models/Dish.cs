@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CloudRestaurant.Shared.Models
 {
     public class Dish
     {
+        public Guid? Id { get; set; }
+
         public string Name { get; set; }
 
         public string Description { get; set; }
