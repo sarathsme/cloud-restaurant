@@ -40,7 +40,6 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             EnsureArg.IsNot(dishId, Guid.Empty, nameof(dishId));
             EnsureArg.IsNotNull(dish, nameof(dish));
 
-            //TODO: Add custom exceptions, null checks
             ObjectId? objectId = menuId.ToObjectId();
             if (objectId == null) throw new ArgumentException(nameof(menuId));
 

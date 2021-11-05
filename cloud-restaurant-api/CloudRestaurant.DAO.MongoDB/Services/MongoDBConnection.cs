@@ -1,5 +1,5 @@
 ﻿using CloudRestaurant.DAO.MongoDB.Interfaces;
-using CloudRestaurant.Shared.Configs;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
 namespace CloudRestaurant.DAO.MongoDB.Services
@@ -13,9 +13,9 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 
         public IMongoDatabase GetRestaurantDB() => _RestaurantDB;
 
-        public MongoDBConnection()
+        public MongoDBConnection(IConfiguration config)
         {
-            _MongoClient = new MongoClient(AppSettings.MongoConnectionString);
+            _MongoClient = new MongoClient(config.GetConnectionString("MongoDB"));
             _RestaurantDB = _MongoClient.GetDatabase(RESTUARANT_DB_NAME);
         }
     }
