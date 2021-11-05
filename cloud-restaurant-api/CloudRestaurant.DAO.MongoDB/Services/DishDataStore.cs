@@ -17,7 +17,21 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 
         public bool Replace(string menuId, Guid dishId, Dish dish)
         {
-            throw new NotImplementedException();
+            //TODO: Add custom exceptions, null checks
+            ObjectId? objectId = menuId.ToObjectId();
+            if (objectId == null) throw new ArgumentException(nameof(menuId));
+
+            DishDAO dishDAO = new DishDAO(dish);
+
+            var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId) 
+                            & Builders<MenuDAO>.Filter.Eq("Dishes.Id", dishId);
+
+            var updateCmd = Builders<MenuDAO>.Update.Set("Dishes.$", dish);
+
+            var result = _MenuCollection.Value.UpdateOne(filter, updateCmd);
+
+            // Can't use ModifiedCount as it can be 0, when the input document does not have any differences with matched the doc in the collection
+            return result.MatchedCount == 1;
         }
     }
 }

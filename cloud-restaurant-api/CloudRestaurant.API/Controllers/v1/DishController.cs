@@ -18,9 +18,16 @@ namespace CloudRestaurant.API.Controllers.v1
         }
 
         [HttpPut("{dishId}")]
-        public bool Update([FromRoute] string menuId, [FromRoute] Guid? dishId, [FromBody] Dish dish)
+        public IActionResult Update([FromRoute] string menuId, [FromRoute] Guid? dishId, [FromBody] Dish dish)
         {
-            return _DishService.Update(menuId, dishId, dish);
+            if(_DishService.Update(menuId, dishId, dish))
+            {
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest($"Dish with ID: {dishId} and menu ID: {menuId} was not found");
+            }
         }
     }
 }
