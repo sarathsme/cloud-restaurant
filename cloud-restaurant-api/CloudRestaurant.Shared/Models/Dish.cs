@@ -34,7 +34,7 @@ namespace CloudRestaurant.Shared.Models
         public IEnumerable<string> Tags { get; set; }
 
         /// <summary>
-        /// Absolute or relative URL for the image
+        /// Absolute or relative URL for the dish's image
         /// </summary>
         public string ImageUrl { get; set; }
 
