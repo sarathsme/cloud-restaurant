@@ -3,6 +3,7 @@ using CloudRestaurant.DAO.MongoDB.Models;
 using CloudRestaurant.DAO.MongoDB.Utils;
 using CloudRestaurant.Shared.Interfaces.DataStore;
 using CloudRestaurant.Shared.Models;
+using EnsureThat;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
@@ -17,6 +18,9 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 
         public bool Create(string menuId, Dish dish)
         {
+            EnsureArg.IsNotNullOrWhiteSpace(menuId, nameof(menuId));
+            EnsureArg.IsNotNull(dish, nameof(dish));
+
             ObjectId? objectId = menuId.ToObjectId();
             if (objectId == null) throw new ArgumentException(nameof(menuId));
 
@@ -32,6 +36,10 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 
         public bool Replace(string menuId, Guid dishId, Dish dish)
         {
+            EnsureArg.IsNotNullOrWhiteSpace(menuId, nameof(menuId));
+            EnsureArg.IsNot(dishId, Guid.Empty, nameof(dishId));
+            EnsureArg.IsNotNull(dish, nameof(dish));
+
             //TODO: Add custom exceptions, null checks
             ObjectId? objectId = menuId.ToObjectId();
             if (objectId == null) throw new ArgumentException(nameof(menuId));
@@ -51,6 +59,9 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 
         public bool Delete(string menuId, Guid dishId)
         {
+            EnsureArg.IsNotNullOrWhiteSpace(menuId, nameof(menuId));
+            EnsureArg.IsNot(dishId, Guid.Empty, nameof(dishId));
+
             ObjectId? objectId = menuId.ToObjectId();
             if (objectId == null) throw new ArgumentException(nameof(menuId));
 

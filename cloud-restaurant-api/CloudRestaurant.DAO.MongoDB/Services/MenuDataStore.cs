@@ -3,6 +3,7 @@ using CloudRestaurant.DAO.MongoDB.Models;
 using CloudRestaurant.DAO.MongoDB.Utils;
 using CloudRestaurant.Shared.Interfaces.DataStore;
 using CloudRestaurant.Shared.Models;
+using EnsureThat;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
@@ -35,27 +36,30 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 
         public Menu Create(Menu menu)
         {
-            //TODO: Add exceptions, null checks
+            EnsureArg.IsNotNull(menu, nameof(menu));
+
             MenuDAO menuDAO = new MenuDAO(menu);
             _MenuCollection.Value.InsertOne(menuDAO);
 
-            // TODO: Check inserted counted????
             return menuDAO.ToAPIServiceModel();
         }
 
         public Menu GetById(string id)
         {
-            //TODO: Add custom exceptions, null checks
+            EnsureArg.IsNotNullOrWhiteSpace(id, nameof(id));
+
             ObjectId? objectId = id.ToObjectId();
             if (objectId == null) throw new ArgumentException(nameof(id));
 
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
+
             return _MenuCollection.Value.Find(filter).FirstOrDefault()?.ToAPIServiceModel();
         }
 
         public bool Delete(string id)
         {
-            //TODO: Add custom exceptions, null checks, refactor??
+            EnsureArg.IsNotNullOrWhiteSpace(id, nameof(id));
+
             ObjectId? objectId = id.ToObjectId();
             if (objectId == null) throw new ArgumentException(nameof(id));
 
@@ -67,7 +71,9 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 
         public bool Replace(string id, Menu menu)
         {
-            //TODO: Add custom exceptions, null checks
+            EnsureArg.IsNotNullOrWhiteSpace(id, nameof(id));
+            EnsureArg.IsNotNull(menu, nameof(menu));
+
             ObjectId? objectId = id.ToObjectId();
             if (objectId == null) throw new ArgumentException(nameof(id));
 
