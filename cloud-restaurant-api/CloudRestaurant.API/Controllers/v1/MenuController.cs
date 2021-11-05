@@ -52,7 +52,7 @@ namespace CloudRestaurant.API.Controllers
             }
             else
             {
-                return BadRequest("ID not found. Please verify the Menu ID provided");
+                return BadRequest($" Menu with id: {id} was not found");
             }
         }
 
