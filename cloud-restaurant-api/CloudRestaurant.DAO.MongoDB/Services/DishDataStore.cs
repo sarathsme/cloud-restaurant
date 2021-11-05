@@ -15,6 +15,21 @@ namespace CloudRestaurant.DAO.MongoDB.Services
     {
         public DishDataStore(IDBConnection dbConnection) : base(dbConnection) { }
 
+        public bool Create(string menuId, Dish dish)
+        {
+            ObjectId? objectId = menuId.ToObjectId();
+            if (objectId == null) throw new ArgumentException(nameof(menuId));
+
+            DishDAO dishDAO = new DishDAO(dish);
+
+            var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
+            var pushCmd = Builders<MenuDAO>.Update.Push("Dishes", dishDAO);
+
+            var result = _MenuCollection.Value.UpdateOne(filter, pushCmd);
+
+            return result.ModifiedCount == 1;
+        }
+
         public bool Replace(string menuId, Guid dishId, Dish dish)
         {
             //TODO: Add custom exceptions, null checks
@@ -26,7 +41,7 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId) 
                             & Builders<MenuDAO>.Filter.Eq("Dishes.Id", dishId);
 
-            var updateCmd = Builders<MenuDAO>.Update.Set("Dishes.$", dish);
+            var updateCmd = Builders<MenuDAO>.Update.Set("Dishes.$", dishDAO);
 
             var result = _MenuCollection.Value.UpdateOne(filter, updateCmd);
 
