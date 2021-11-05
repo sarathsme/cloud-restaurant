@@ -10,6 +10,7 @@ namespace CloudRestaurant.Services
         public static void AddAPIServices(this IServiceCollection services)
         {
             services.AddSingleton<IMenuService, MenuService>();
+            services.AddSingleton<IDishService, DishService>();
             services.AddMongoDb();
         }
     }

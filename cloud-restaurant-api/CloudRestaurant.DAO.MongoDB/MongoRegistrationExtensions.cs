@@ -17,6 +17,7 @@ namespace CloudRestaurant.DAO.MongoDB
 
             // Add all database's data stores here:
             serviceCollection.AddSingleton<IMenuDataStore, MenuDataStore>();
+            serviceCollection.AddSingleton<IDishDataStore, DishDataStore>();
         }
     }
 }

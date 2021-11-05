@@ -13,9 +13,9 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 {
     public class MenuDataStore : IMenuDataStore
     {
-        private const string MENU_COLLECTION_NAME = "Menu";
-        private readonly IMongoDatabase _RestaurantDb;
-        private readonly Lazy<IMongoCollection<MenuDAO>> _MenuCollection;
+        protected const string MENU_COLLECTION_NAME = "Menu";
+        protected readonly IMongoDatabase _RestaurantDb;
+        protected readonly Lazy<IMongoCollection<MenuDAO>> _MenuCollection;
 
         public MenuDataStore(IDBConnection dbConnection)
         {
