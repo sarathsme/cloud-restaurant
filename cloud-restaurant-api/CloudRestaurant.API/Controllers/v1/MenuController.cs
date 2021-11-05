@@ -57,15 +57,15 @@ namespace CloudRestaurant.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Replace([FromRoute] string id, [FromBody] Menu menu)
+        public IActionResult Update([FromRoute] string id, [FromBody] Menu menu)
         {
-            if(_MenuService.Replace(id, menu))
+            if(_MenuService.Update(id, menu))
             {
                 return NoContent();
             }
             else
             {
-                return BadRequest("Unable to update a menu or create a new menu. Please ensure the new Menu ID is not redundant");
+                return BadRequest($"The Menu with id: {id} was not found");
             }
         }
     }

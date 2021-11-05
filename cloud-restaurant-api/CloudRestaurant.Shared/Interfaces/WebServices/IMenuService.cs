@@ -15,6 +15,6 @@ namespace CloudRestaurant.Shared.Interfaces.WebServices
 
         bool Delete(string id);
 
-        bool Replace(string id, Menu menu);
+        bool Update(string id, Menu menu);
     }
 }

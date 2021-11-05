@@ -37,7 +37,7 @@ namespace CloudRestaurant.Services.Services
             return _MenuDataStore.Delete(id);
         }
 
-        public bool Replace(string id, Menu menu)
+        public bool Update(string id, Menu menu)
         {
             return _MenuDataStore.Replace(id, menu);
         }
