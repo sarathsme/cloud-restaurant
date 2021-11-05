@@ -1,5 +1,6 @@
 ﻿using CloudRestaurant.DAO.MongoDB.Utils;
 using CloudRestaurant.Shared.Models;
+using EnsureThat;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
@@ -23,7 +24,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
 
         public MenuDAO(Menu menu)
         {
-            //TODO: Add custom exceptions, null checks
+            EnsureArg.IsNotNull(menu, nameof(menu));
+
             if(!string.IsNullOrWhiteSpace(menu.Id))
             {
                 Id = menu.Id.ToObjectId() ?? throw new ArgumentException("Invalid Menu ID");

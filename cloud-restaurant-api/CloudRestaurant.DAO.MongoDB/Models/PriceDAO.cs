@@ -1,4 +1,5 @@
 ﻿using CloudRestaurant.Shared.Models;
+using EnsureThat;
 
 namespace CloudRestaurant.DAO.MongoDB.Models
 {
@@ -12,6 +13,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
 
         public PriceDAO(Price price)
         {
+            EnsureArg.IsNotNull(price, nameof(price));
+
             Quantity = price.Quantity;
             Unit = price.Unit;
             UnitDisplayText = price.UnitDisplayText;
@@ -21,9 +24,9 @@ namespace CloudRestaurant.DAO.MongoDB.Models
         {
             return new Price()
             {
-                Quantity = this.Quantity,
-                Unit = this.Unit,
-                UnitDisplayText = this.UnitDisplayText
+                Quantity = Quantity,
+                Unit = Unit,
+                UnitDisplayText = UnitDisplayText
             };
         }
     }

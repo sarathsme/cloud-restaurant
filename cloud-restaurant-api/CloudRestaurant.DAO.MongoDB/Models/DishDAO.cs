@@ -1,4 +1,5 @@
 ﻿using CloudRestaurant.Shared.Models;
+using EnsureThat;
 using System;
 using System.Collections.Generic;
 
@@ -30,12 +31,14 @@ namespace CloudRestaurant.DAO.MongoDB.Models
 
         public DishDAO(Dish dish)
         {
+            EnsureArg.IsNotNull(dish, nameof(dish));
+
             Id = dish.Id ?? Guid.NewGuid();
             Name = dish.Name;
             Description = dish.Description;
             Category = dish.Category;
             IsAvailable = dish.IsAvailable;
-            Price = new PriceDAO(dish.Price);
+            Price = dish.Price != null ? new PriceDAO(dish.Price) : null;
             UserRating = dish.UserRating;
             Tags = dish.Tags;
             ImageUrl = dish.ImageUrl;
@@ -52,7 +55,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
                 Description = Description,
                 Category = Category,
                 IsAvailable = IsAvailable,
-                Price = Price.ToAPIServiceModel(),
+                Price = Price?.ToAPIServiceModel(),
                 UserRating = UserRating,
                 Tags = Tags,
                 ImageUrl = ImageUrl,
