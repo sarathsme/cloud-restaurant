@@ -76,7 +76,8 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
             var result = _MenuCollection.Value.ReplaceOne(filter, menuDAO);
 
-            return result.ModifiedCount == 1;
+            // Can't use ModifiedCount as it can be 0, when the input document does not have any differences with matched the doc in the collection
+            return result.MatchedCount == 1;
         }
     }
 }
