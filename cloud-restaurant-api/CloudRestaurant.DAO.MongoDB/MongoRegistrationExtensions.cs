@@ -2,9 +2,6 @@
 using CloudRestaurant.DAO.MongoDB.Services;
 using CloudRestaurant.Shared.Interfaces.DataStore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CloudRestaurant.DAO.MongoDB
 {

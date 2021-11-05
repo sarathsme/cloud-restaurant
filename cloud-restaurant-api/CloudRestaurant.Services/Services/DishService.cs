@@ -2,8 +2,6 @@
 using CloudRestaurant.Shared.Interfaces.WebServices;
 using CloudRestaurant.Shared.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CloudRestaurant.Services.Services

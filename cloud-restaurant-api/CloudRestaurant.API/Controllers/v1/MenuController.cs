@@ -1,10 +1,7 @@
 ﻿using CloudRestaurant.Shared.Models;
 using CloudRestaurant.Shared.Interfaces.WebServices;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CloudRestaurant.API.Controllers
