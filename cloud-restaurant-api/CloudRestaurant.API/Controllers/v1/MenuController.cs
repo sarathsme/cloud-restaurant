@@ -20,8 +20,9 @@ namespace CloudRestaurant.API.Controllers
             _MenuService = menuService;
         }
 
+        // TODO: Filtering, pagination, sorting
         [HttpGet]
-        public IEnumerable<Menu> Get()
+        public IEnumerable<Menu> GetAll()
         {
             return _MenuService.GetAll();
         }
