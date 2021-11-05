@@ -31,7 +31,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
                 Id = menu.Id.ToObjectId() ?? throw new ArgumentException("Invalid Menu ID");
             }
 
-            IsEnabled = menu.IsEnabled;             
+            IsEnabled = menu.IsEnabled ?? throw new ArgumentNullException("IsEnabled cannot be null");
             Name = menu.Name;
             Description = menu.Description;
             Dishes = menu.Dishes?.Select(dish => new DishDAO(dish));

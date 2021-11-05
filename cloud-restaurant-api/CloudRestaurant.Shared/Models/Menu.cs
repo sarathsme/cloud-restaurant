@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CloudRestaurant.Shared.Models
 {
@@ -10,7 +11,8 @@ namespace CloudRestaurant.Shared.Models
 
         public string Description { get; set; }
 
-        public bool IsEnabled { get; set; }
+        [Required]
+        public bool? IsEnabled { get; set; }
 
         public IEnumerable<Dish> Dishes { get; set; }
     }

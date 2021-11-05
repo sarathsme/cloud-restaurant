@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CloudRestaurant.Shared.Models
 {
@@ -7,6 +8,7 @@ namespace CloudRestaurant.Shared.Models
     {
         public Guid? Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -37,7 +39,6 @@ namespace CloudRestaurant.Shared.Models
         /// Absolute or relative URL for the dish's image
         /// </summary>
         public string ImageUrl { get; set; }
-
 
         /// <summary>
         /// Time of day the dish will be available like - breakfast, lunch, dinner, weekend, etc.
