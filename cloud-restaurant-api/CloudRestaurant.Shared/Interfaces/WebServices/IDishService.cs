@@ -9,6 +9,8 @@ namespace CloudRestaurant.Shared.Interfaces.WebServices
     {
         bool Create(string menuId, Dish dish);
 
-        bool Update(string menuId, Guid? dishId, Dish dish);
+        bool Update(string menuId, Guid dishId, Dish dish);
+
+        bool Delete(string menuId, Guid dishId);
     }
 }

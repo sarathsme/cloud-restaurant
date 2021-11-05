@@ -10,5 +10,7 @@ namespace CloudRestaurant.Shared.Interfaces.DataStore
         bool Create(string menuId, Dish dish);
 
         bool Replace(string menuId, Guid dishId, Dish dish);
+
+        bool Delete(string menuId, Guid dishId);
     }
 }

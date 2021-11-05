@@ -21,9 +21,14 @@ namespace CloudRestaurant.Services.Services
             return _DishDataStore.Create(menuId, dish);
         }
 
-        public bool Update(string menuId, Guid? dishId, Dish dish)
+        public bool Update(string menuId, Guid dishId, Dish dish)
         {
-            return _DishDataStore.Replace(menuId, dishId.Value, dish);
+            return _DishDataStore.Replace(menuId, dishId, dish);
+        }
+
+        public bool Delete(string menuId, Guid dishId)
+        {
+            return _DishDataStore.Delete(menuId, dishId);
         }
     }
 }
