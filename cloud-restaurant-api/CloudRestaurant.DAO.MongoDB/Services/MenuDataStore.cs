@@ -9,6 +9,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CloudRestaurant.DAO.MongoDB.Services
 {
@@ -26,25 +27,26 @@ namespace CloudRestaurant.DAO.MongoDB.Services
 
         private IMongoCollection<MenuDAO> GetMenuCollection() => _RestaurantDb.GetCollection<MenuDAO>(MENU_COLLECTION_NAME);
 
-        public IEnumerable<Menu> GetAll()
+        public async Task<IEnumerable<Menu>> GetAll()
         {
             var filter = Builders<MenuDAO>.Filter.Empty;
-            var menuDAOs = _MenuCollection.Value.Find(filter).ToEnumerable();
+            var result = await _MenuCollection.Value.FindAsync(filter);
 
-            return menuDAOs.Select(menu => menu.ToAPIServiceModel());
+            return result.ToEnumerable()
+                    .Select(menu => menu.ToAPIServiceModel());
         }
 
-        public Menu Create(Menu menu)
+        public async Task<Menu> Create(Menu menu)
         {
             EnsureArg.IsNotNull(menu, nameof(menu));
 
             MenuDAO menuDAO = new MenuDAO(menu);
-            _MenuCollection.Value.InsertOne(menuDAO);
+            await _MenuCollection.Value.InsertOneAsync(menuDAO);
 
             return menuDAO.ToAPIServiceModel();
         }
 
-        public Menu GetById(string id)
+        public async Task<Menu> GetById(string id)
         {
             EnsureArg.IsNotNullOrWhiteSpace(id, nameof(id));
 
@@ -52,11 +54,12 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             if (objectId == null) throw new ArgumentException(nameof(id));
 
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
-
-            return _MenuCollection.Value.Find(filter).FirstOrDefault()?.ToAPIServiceModel();
+            var result = await _MenuCollection.Value.FindAsync(filter);
+                
+            return result.FirstOrDefault()?.ToAPIServiceModel();
         }
 
-        public bool Delete(string id)
+        public async Task<bool> Delete(string id)
         {
             EnsureArg.IsNotNullOrWhiteSpace(id, nameof(id));
 
@@ -64,12 +67,12 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             if (objectId == null) throw new ArgumentException(nameof(id));
 
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
-            var result = _MenuCollection.Value.DeleteOne(filter);
+            var result = await _MenuCollection.Value.DeleteOneAsync(filter);
 
             return result.DeletedCount == 1;
         }
 
-        public bool Replace(string id, Menu menu)
+        public async Task<bool> Replace(string id, Menu menu)
         {
             EnsureArg.IsNotNullOrWhiteSpace(id, nameof(id));
             EnsureArg.IsNotNull(menu, nameof(menu));
@@ -80,7 +83,7 @@ namespace CloudRestaurant.DAO.MongoDB.Services
             MenuDAO menuDAO = new MenuDAO(menu);
 
             var filter = Builders<MenuDAO>.Filter.Eq("Id", objectId);
-            var result = _MenuCollection.Value.ReplaceOne(filter, menuDAO);
+            var result = await _MenuCollection.Value.ReplaceOneAsync(filter, menuDAO);
 
             // Can't use ModifiedCount as it can be 0, when the input document does not have any differences with matched the doc in the collection
             return result.MatchedCount == 1;

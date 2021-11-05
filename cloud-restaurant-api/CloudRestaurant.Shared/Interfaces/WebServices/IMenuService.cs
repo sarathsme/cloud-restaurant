@@ -2,19 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CloudRestaurant.Shared.Interfaces.WebServices
 {
     public interface IMenuService
     {
-        IEnumerable<Menu> GetAll();
+        Task<IEnumerable<Menu>> GetAll();
 
-        Menu Create(Menu menu);
+        Task<Menu> Create(Menu menu);
 
-        Menu GetById(string id);
+        Task<Menu> GetById(string id);
 
-        bool Delete(string id);
+        Task<bool> Delete(string id);
 
-        bool Update(string id, Menu menu);
+        Task<bool> Update(string id, Menu menu);
     }
 }

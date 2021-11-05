@@ -22,22 +22,22 @@ namespace CloudRestaurant.API.Controllers
 
         // TODO: Filtering, pagination, sorting
         [HttpGet]
-        public IEnumerable<Menu> GetAll()
+        public async Task<IEnumerable<Menu>> GetAll()
         {
-            return _MenuService.GetAll();
+            return await _MenuService.GetAll();
         }
 
         [HttpPost]
-        public IActionResult Create(Menu menu)
+        public async Task<IActionResult> Create(Menu menu)
         {
-            var createdMenu = _MenuService.Create(menu);
+            var createdMenu = await _MenuService.Create(menu);
             return CreatedAtAction(nameof(GetById), new { id = createdMenu.Id }, createdMenu);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute] string id)
+        public async Task<IActionResult> GetById([FromRoute] string id)
         {
-            var menu = _MenuService.GetById(id);
+            var menu = await _MenuService.GetById(id);
             if (menu == null)
                 return NotFound();
 
@@ -45,9 +45,9 @@ namespace CloudRestaurant.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] string id)
+        public async Task<IActionResult> Delete([FromRoute] string id)
         {
-            if (_MenuService.Delete(id))
+            if (await _MenuService.Delete(id))
             {
                 return NoContent();
             }
@@ -58,9 +58,9 @@ namespace CloudRestaurant.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update([FromRoute] string id, [FromBody] Menu menu)
+        public async Task<IActionResult> Update([FromRoute] string id, [FromBody] Menu menu)
         {
-            if(_MenuService.Update(id, menu))
+            if(await _MenuService.Update(id, menu))
             {
                 return NoContent();
             }

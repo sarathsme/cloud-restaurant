@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CloudRestaurant.Services.Services
 {
@@ -17,29 +18,29 @@ namespace CloudRestaurant.Services.Services
             _MenuDataStore = menuDataStore;
         }
 
-        public IEnumerable<Menu> GetAll()
+        public async Task<IEnumerable<Menu>> GetAll()
         {
-            return _MenuDataStore.GetAll();
+            return await _MenuDataStore.GetAll();
         }
 
-        public Menu Create(Menu menu)
+        public async Task<Menu> Create(Menu menu)
         {
-            return _MenuDataStore.Create(menu);
+            return await _MenuDataStore.Create(menu);
         }
 
-        public Menu GetById(string id)
+        public async Task<Menu> GetById(string id)
         {
-            return _MenuDataStore.GetById(id);
+            return await _MenuDataStore.GetById(id);
         }
 
-        public bool Delete(string id)
+        public async Task<bool> Delete(string id)
         {
-            return _MenuDataStore.Delete(id);
+            return await _MenuDataStore.Delete(id);
         }
 
-        public bool Update(string id, Menu menu)
+        public async Task<bool> Update(string id, Menu menu)
         {
-            return _MenuDataStore.Replace(id, menu);
+            return await _MenuDataStore.Replace(id, menu);
         }
     }
 }
