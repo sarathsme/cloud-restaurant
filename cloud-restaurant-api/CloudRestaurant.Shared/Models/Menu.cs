@@ -12,8 +12,6 @@ namespace CloudRestaurant.Shared.Models
 
         public bool IsEnabled { get; set; }
 
-        public IEnumerable<Category> Categories { get; set; }
-
-        public IEnumerable<Dish> UncategorizedDishes { get; set; }
+        public IEnumerable<Dish> Dishes { get; set; }
     }
 }

@@ -11,6 +11,14 @@ namespace CloudRestaurant.Shared.Models
 
         public string Description { get; set; }
 
+        /// <summary>
+        /// The category of the dish like, Starters, Main course, Desserts, Beverages, etc.
+        /// </summary>
+        public string Category { get; set; }
+
+        /// <summary>
+        /// Indicates whether the dish is currently available
+        /// </summary>
         public bool IsAvailable { get; set; }
 
         public Price Price { get; set; }

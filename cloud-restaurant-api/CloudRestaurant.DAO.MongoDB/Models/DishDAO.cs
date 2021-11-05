@@ -12,6 +12,8 @@ namespace CloudRestaurant.DAO.MongoDB.Models
 
         public string Description { get; set; }
 
+        public string Category { get; set; }
+
         public bool IsAvailable { get; set; }
 
         public PriceDAO Price { get; set; }
@@ -31,6 +33,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
             Id = dish.Id ?? Guid.NewGuid();
             Name = dish.Name;
             Description = dish.Description;
+            Category = dish.Category;
             IsAvailable = dish.IsAvailable;
             Price = new PriceDAO(dish.Price);
             UserRating = dish.UserRating;
@@ -47,6 +50,7 @@ namespace CloudRestaurant.DAO.MongoDB.Models
                 Id = Id,
                 Name = Name,
                 Description = Description,
+                Category = Category,
                 IsAvailable = IsAvailable,
                 Price = Price.ToAPIServiceModel(),
                 UserRating = UserRating,
