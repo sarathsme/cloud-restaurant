@@ -1,0 +1,24 @@
+.image-wrapper {
+    width: 200px;
+}
+
+.mid-col {
+    width: 400px;
+}
+
+.last-col {
+    width: 100px;
+}
+
+.price {
+    color: #947b00;
+}
+
+.waiting-clock {
+    font-size: 40px;
+}
+
+.waiting-time {
+    font-weight: 600;
+}
+

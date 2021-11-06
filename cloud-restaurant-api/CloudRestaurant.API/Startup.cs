@@ -26,6 +26,13 @@ namespace CloudRestaurant.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CloudRestaurant.API", Version = "v1" });
             });
+
+            services.AddCors(o => o.AddPolicy("DevelopmentPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +43,8 @@ namespace CloudRestaurant.API
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CloudRestaurant.API v1"));
+
+                app.UseCors("DevelopmentPolicy");
             }
 
             app.UseHttpsRedirection();
