@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudRestaurant.API", "CloudRestaurant.API\CloudRestaurant.API.csproj", "{D3B488E9-B5BF-4054-812F-5E88EEB84EC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudRestaurant.Shared", "CloudRestaurant.Shared\CloudRestaurant.Shared.csproj", "{0961581E-CBC7-4D23-A2AA-AB085D0F7C6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudRestaurant.Shared", "CloudRestaurant.Shared\CloudRestaurant.Shared.csproj", "{0961581E-CBC7-4D23-A2AA-AB085D0F7C6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudRestaurant.Services", "CloudRestaurant.Services\CloudRestaurant.Services.csproj", "{124632F7-F266-437A-8753-F32539908FDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudRestaurant.Services", "CloudRestaurant.Services\CloudRestaurant.Services.csproj", "{124632F7-F266-437A-8753-F32539908FDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudRestaurant.DAO.MongoDB", "CloudRestaurant.DAO.MongoDB\CloudRestaurant.DAO.MongoDB.csproj", "{7435863C-31AA-43F5-AD85-7F055AE3D039}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudRestaurant.DAO.MongoDB", "CloudRestaurant.DAO.MongoDB\CloudRestaurant.DAO.MongoDB.csproj", "{7435863C-31AA-43F5-AD85-7F055AE3D039}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
