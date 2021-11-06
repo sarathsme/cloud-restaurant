@@ -1,5 +1,5 @@
 <div class="mt-3 container">
-    <div class="d-flex flex-column justify-content-around align-items-center" *ngIf="AllMenus && AllMenus.length">
+    <div class="d-flex flex-column justify-content-around align-items-center" *ngIf="SelectedMenu">
         <h1 class="mx-auto text-danger">{{SelectedMenu.name}}</h1>
         <div class="col-7 m-4 card" *ngFor="let dish of SelectedMenu.dishes">
             <div class="card-body d-flex flex-row justify-content-between">
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div *ngIf="!AllMenus || !AllMenus.length">
+    <div *ngIf="!SelectedMenu">
         No menu is configured. Please use the Rest API to configure a menu
     </div>
 </div>
