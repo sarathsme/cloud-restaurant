@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  mongodb:
+    image: "mongo"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "root"
+      MONGO_INITDB_ROOT_PASSWORD: "D3V3L0P3R#1"
+  api:
+    build:
+        context: ./cloud-restaurant-api/
+        dockerfile: ./CloudRestaurant.API/Dockerfile
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_URLS=http://+:80
+        - ConnectionStrings:MongoDB=mongodb://root:D3V3L0P3R#1@mongodb:27017?authSource=admin&readPreference=primary&appname=CloudRestaurantAPI&ssl=false
+  web-client:
+    build:
+        context: ./cloud-restaurant-web-client/
+        dockerfile: ./Dockerfile
+    ports:
+        - "4201:80"
