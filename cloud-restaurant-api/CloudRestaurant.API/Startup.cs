@@ -52,6 +52,8 @@ namespace CloudRestaurant.API
                 app.UseCors("DevelopmentPolicy");
             }
 
+            app.UsePathBase("/api");
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

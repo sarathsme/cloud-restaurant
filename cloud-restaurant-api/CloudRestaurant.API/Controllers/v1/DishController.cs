@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CloudRestaurant.API.Controllers.v1
 {
-    [Route("api/v1/Menu/{menuId}/[controller]")]
+    [Route("v1/Menu/{menuId}/[controller]")]
     [ApiController]
     public class DishController : ControllerBase
     {
