@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "316d6474-eec7-452b-9cd6-f85d2cdbc0ce",
+		"name": "CloudRestaurant-V1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dish",
+			"item": [
+				{
+					"name": "UpdateById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"id\": \"77a8b6bc-913a-4ae0-9145-1a3b384b09f3\",\r\n            \"name\": \"Schnitzel\",\r\n            \"description\": \"Finely sliced chicken coated with panko bread served with tartar sauce and fries.\",\r\n            \"category\": null,\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 5,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 4,\r\n            \"tags\": [\r\n                \"Today's special\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/schitzel.jpeg\",\r\n            \"availableTimeOfDay\": [\r\n                \"Dinner\",\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 900\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_URL}}/api/v1/menu/61851d080b4cc2644c64a504/dish/77a8b6bc-913a-4ae0-9145-1a3b384b09f3",
+							"host": [
+								"{{HOST_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"menu",
+								"61851d080b4cc2644c64a504",
+								"dish",
+								"77a8b6bc-913a-4ae0-9145-1a3b384b09f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Rice\",\r\n    \"description\": \"nooooooooo\",\r\n    \"isAvailable\": true,\r\n    \"price\": {\r\n        \"quantity\": 15,\r\n        \"unit\": \"Rs\",\r\n        \"unitDisplayText\": \"Rs\"\r\n    },\r\n    \"userRating\": 4.5,\r\n    \"tags\": [\r\n        \"Best seller\",\r\n        \"Chef recommended\"\r\n    ],\r\n    \"imageUrl\": null,\r\n    \"availableTimeOfDay\": [\r\n        \"Dinner\",\r\n        \"lunch\"\r\n    ],\r\n    \"waitingTime\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_URL}}/api/v1/menu/61851d080b4cc2644c64a504/dish/",
+							"host": [
+								"{{HOST_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"menu",
+								"61851d080b4cc2644c64a504",
+								"dish",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_URL}}/api/v1/menu/61851d080b4cc2644c64a504/dish/5490930b-7348-4fd4-84cc-c3fa5d56c578",
+							"host": [
+								"{{HOST_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"menu",
+								"61851d080b4cc2644c64a504",
+								"dish",
+								"5490930b-7348-4fd4-84cc-c3fa5d56c578"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Menu",
+			"item": [
+				{
+					"name": "Create",
+					"protocolProfileBehavior": {
+						"followRedirects": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"61851d080b4cc2644c64a504\",\r\n    \"name\": \"Lunch Menu\",\r\n    \"description\": \"Explore the mouth watering array of dishes that we offer for our lunch\",\r\n    \"isEnabled\": true,\r\n    \"dishes\": [\r\n        {\r\n            \"id\": \"77a8b6bc-913a-4ae0-9145-1a3b384b09f3\",\r\n            \"name\": \"Schnitzel\",\r\n            \"description\": \"Finely sliced chicken coated with panko bread served with tartar sauce and fries.\",\r\n            \"category\": null,\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 5,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 4,\r\n            \"tags\": [\r\n                \"Today's special\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/schitzel.jpeg\",\r\n            \"availableTimeOfDay\": [\r\n                \"Dinner\",\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 900\r\n        },\r\n        {\r\n            \"id\": \"055a315b-7fbb-40ab-b2e9-f1aa73c7b244\",\r\n            \"name\": \"Grilled chicken Salad\",\r\n            \"description\": \"Grilled chicken spread over a combination of veggies, herbs and sauces.\",\r\n            \"category\": \"Entree\",\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 8,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 4,\r\n            \"tags\": [\r\n                \"Best Seller\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/grilled-chicken.jpeg\",\r\n            \"availableTimeOfDay\": [\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 1200\r\n        },\r\n        {\r\n            \"id\": \"b2cbb376-c43c-4f9e-825a-bbedec3043d7\",\r\n            \"name\": \"Barbecue chicken pizza\",\r\n            \"description\": \"Pepperoni topped with your favourite cheese\",\r\n            \"category\": null,\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 5,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 3,\r\n            \"tags\": [\r\n                \"Chef Recomended\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/pizza.jpg\",\r\n            \"availableTimeOfDay\": [\r\n                \"Dinner\",\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 600\r\n        },\r\n        {\r\n            \"id\": \"1697cb5c-6223-4da5-a6f5-96fd48a78cb2\",\r\n            \"name\": \"Ham burger\",\r\n            \"description\": \"Fresh ham clubbed to bun along with onion, tomato,lettuce,cheese and sauces\",\r\n            \"category\": null,\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 3,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 4,\r\n            \"tags\": [\r\n                \"Must try\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/hamburger.jpeg\",\r\n            \"availableTimeOfDay\": [\r\n                \"Dinner\",\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 300\r\n        },\r\n        {\r\n            \"id\": \"36b8648d-d61a-4ea4-8d50-c329aa8b9860\",\r\n            \"name\": \"Signature steak\",\r\n            \"description\": \"Tastiest Cut Of Tenderloin, Our Speciality Served With Mash Potato And Veggies, Done Rare To Medium Well.\",\r\n            \"category\": null,\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 15,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 4,\r\n            \"tags\": [\r\n                \"Chef Recomended\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/steak.jpeg\",\r\n            \"availableTimeOfDay\": [\r\n                \"Dinner\",\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 1200\r\n        },\r\n        {\r\n            \"id\": \"f48ed63d-6814-485f-9f3a-0a260808c1ea\",\r\n            \"name\": \"Lasagne\",\r\n            \"description\": \"Home made pasta with alternate layers of rich red tomato sauce, herbs, cottage cheese, baked and served steaming hot\",\r\n            \"category\": null,\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 10,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 4,\r\n            \"tags\": [\r\n                \"Today's special\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/lasagna.jpeg\",\r\n            \"availableTimeOfDay\": [\r\n                \"Dinner\",\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 900\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_URL}}/api/v1/menu",
+							"host": [
+								"{{HOST_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_URL}}/api/v1/menu",
+							"host": [
+								"{{HOST_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_URL}}/api/v1/menu/61851d080b4cc2644c64a504",
+							"host": [
+								"{{HOST_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"menu",
+								"61851d080b4cc2644c64a504"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST_URL}}/api/v1/menu/61857980781f23c24869aa79",
+							"host": [
+								"{{HOST_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"menu",
+								"61857980781f23c24869aa79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"61851d080b4cc2644c64a504\",\r\n    \"name\": \"Lunch Menu\",\r\n    \"description\": \"Explore the mouth watering array of dishes that we offer for our lunch\",\r\n    \"isEnabled\": true,\r\n    \"dishes\": [\r\n        {\r\n            \"id\": \"77a8b6bc-913a-4ae0-9145-1a3b384b09f3\",\r\n            \"name\": \"Schnitzel\",\r\n            \"description\": \"Finely sliced chicken coated with panko bread served with tartar sauce and fries.\",\r\n            \"category\": null,\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 5,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 4,\r\n            \"tags\": [\r\n                \"Today's special\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/schitzel.jpeg\",\r\n            \"availableTimeOfDay\": [\r\n                \"Dinner\",\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 900\r\n        },\r\n        {\r\n            \"id\": \"055a315b-7fbb-40ab-b2e9-f1aa73c7b244\",\r\n            \"name\": \"Grilled chicken Salad\",\r\n            \"description\": \"Grilled chicken spread over a combination of veggies, herbs and sauces.\",\r\n            \"category\": \"Entree\",\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 8,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 4,\r\n            \"tags\": [\r\n                \"Best Seller\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/grilled-chicken.jpeg\",\r\n            \"availableTimeOfDay\": [\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 1200\r\n        },\r\n        {\r\n            \"id\": \"b2cbb376-c43c-4f9e-825a-bbedec3043d7\",\r\n            \"name\": \"Barbecue chicken pizza\",\r\n            \"description\": \"Pepperoni topped with your favourite cheese\",\r\n            \"category\": null,\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 5,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 3,\r\n            \"tags\": [\r\n                \"Chef Recomended\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/pizza.jpg\",\r\n            \"availableTimeOfDay\": [\r\n                \"Dinner\",\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 600\r\n        },\r\n        {\r\n            \"id\": \"1697cb5c-6223-4da5-a6f5-96fd48a78cb2\",\r\n            \"name\": \"Ham burger\",\r\n            \"description\": \"Fresh ham clubbed to bun along with onion, tomato,lettuce,cheese and sauces\",\r\n            \"category\": null,\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 3,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 4,\r\n            \"tags\": [\r\n                \"Must try\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/hamburger.jpeg\",\r\n            \"availableTimeOfDay\": [\r\n                \"Dinner\",\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 300\r\n        },\r\n        {\r\n            \"id\": \"36b8648d-d61a-4ea4-8d50-c329aa8b9860\",\r\n            \"name\": \"Signature steak\",\r\n            \"description\": \"Tastiest Cut Of Tenderloin, Our Speciality Served With Mash Potato And Veggies, Done Rare To Medium Well.\",\r\n            \"category\": null,\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 15,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 4,\r\n            \"tags\": [\r\n                \"Chef Recomended\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/steak.jpeg\",\r\n            \"availableTimeOfDay\": [\r\n                \"Dinner\",\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 1200\r\n        },\r\n        {\r\n            \"id\": \"f48ed63d-6814-485f-9f3a-0a260808c1ea\",\r\n            \"name\": \"Lasagne\",\r\n            \"description\": \"Home made pasta with alternate layers of rich red tomato sauce, herbs, cottage cheese, baked and served steaming hot\",\r\n            \"category\": null,\r\n            \"isAvailable\": true,\r\n            \"price\": {\r\n                \"quantity\": 10,\r\n                \"unit\": \"EUR\",\r\n                \"unitDisplayText\": \"€\"\r\n            },\r\n            \"userRating\": 4,\r\n            \"tags\": [\r\n                \"Today's special\"\r\n            ],\r\n            \"imageUrl\": \"/assets/images/lasagna.jpeg\",\r\n            \"availableTimeOfDay\": [\r\n                \"Dinner\",\r\n                \"lunch\"\r\n            ],\r\n            \"waitingTime\": 900\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_URL}}/api/v1/menu/61851d080b4cc2644c64a504",
+							"host": [
+								"{{HOST_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"menu",
+								"61851d080b4cc2644c64a504"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST_URL",
+			"value": "http://localhost:44894"
+		}
+	]
+}

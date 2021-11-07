@@ -1,0 +1,139 @@
+{
+    "id": "61851d080b4cc2644c64a504",
+    "name": "Lunch Menu",
+    "description": "Explore the mouth watering array of dishes that we offer for our lunch",
+    "isEnabled": true,
+    "dishes": [
+        {
+            "id": "77a8b6bc-913a-4ae0-9145-1a3b384b09f3",
+            "name": "Schnitzel",
+            "description": "Finely sliced chicken coated with panko bread served with tartar sauce and fries.",
+            "category": null,
+            "isAvailable": true,
+            "price": {
+                "quantity": 5,
+                "unit": "EUR",
+                "unitDisplayText": "€"
+            },
+            "userRating": 4,
+            "tags": [
+                "Today's special"
+            ],
+            "imageUrl": "/assets/images/schitzel.jpeg",
+            "availableTimeOfDay": [
+                "Dinner",
+                "lunch"
+            ],
+            "waitingTime": 900
+        },
+        {
+            "id": "055a315b-7fbb-40ab-b2e9-f1aa73c7b244",
+            "name": "Grilled chicken Salad",
+            "description": "Grilled chicken spread over a combination of veggies, herbs and sauces.",
+            "category": "Entree",
+            "isAvailable": true,
+            "price": {
+                "quantity": 8,
+                "unit": "EUR",
+                "unitDisplayText": "€"
+            },
+            "userRating": 4,
+            "tags": [
+                "Best Seller"
+            ],
+            "imageUrl": "/assets/images/grilled-chicken.jpeg",
+            "availableTimeOfDay": [
+                "lunch"
+            ],
+            "waitingTime": 1200
+        },
+        {
+            "id": "b2cbb376-c43c-4f9e-825a-bbedec3043d7",
+            "name": "Barbecue chicken pizza",
+            "description": "Pepperoni topped with your favourite cheese",
+            "category": null,
+            "isAvailable": true,
+            "price": {
+                "quantity": 5,
+                "unit": "EUR",
+                "unitDisplayText": "€"
+            },
+            "userRating": 3,
+            "tags": [
+                "Chef Recomended"
+            ],
+            "imageUrl": "/assets/images/pizza.jpg",
+            "availableTimeOfDay": [
+                "Dinner",
+                "lunch"
+            ],
+            "waitingTime": 600
+        },
+        {
+            "id": "1697cb5c-6223-4da5-a6f5-96fd48a78cb2",
+            "name": "Ham burger",
+            "description": "Fresh ham clubbed to bun along with onion, tomato,lettuce,cheese and sauces",
+            "category": null,
+            "isAvailable": true,
+            "price": {
+                "quantity": 3,
+                "unit": "EUR",
+                "unitDisplayText": "€"
+            },
+            "userRating": 4,
+            "tags": [
+                "Must try"
+            ],
+            "imageUrl": "/assets/images/hamburger.jpeg",
+            "availableTimeOfDay": [
+                "Dinner",
+                "lunch"
+            ],
+            "waitingTime": 300
+        },
+        {
+            "id": "36b8648d-d61a-4ea4-8d50-c329aa8b9860",
+            "name": "Signature steak",
+            "description": "Tastiest Cut Of Tenderloin, Our Speciality Served With Mash Potato And Veggies, Done Rare To Medium Well.",
+            "category": null,
+            "isAvailable": true,
+            "price": {
+                "quantity": 15,
+                "unit": "EUR",
+                "unitDisplayText": "€"
+            },
+            "userRating": 4,
+            "tags": [
+                "Chef Recomended"
+            ],
+            "imageUrl": "/assets/images/steak.jpeg",
+            "availableTimeOfDay": [
+                "Dinner",
+                "lunch"
+            ],
+            "waitingTime": 1200
+        },
+        {
+            "id": "f48ed63d-6814-485f-9f3a-0a260808c1ea",
+            "name": "Lasagne",
+            "description": "Home made pasta with alternate layers of rich red tomato sauce, herbs, cottage cheese, baked and served steaming hot",
+            "category": null,
+            "isAvailable": true,
+            "price": {
+                "quantity": 10,
+                "unit": "EUR",
+                "unitDisplayText": "€"
+            },
+            "userRating": 4,
+            "tags": [
+                "Today's special"
+            ],
+            "imageUrl": "/assets/images/lasagna.jpeg",
+            "availableTimeOfDay": [
+                "Dinner",
+                "lunch"
+            ],
+            "waitingTime": 900
+        }
+    ]
+}
