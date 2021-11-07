@@ -14,10 +14,10 @@ COPY ["CloudRestaurant.Shared/CloudRestaurant.Shared.csproj", "CloudRestaurant.S
 RUN dotnet restore "CloudRestaurant.API/CloudRestaurant.API.csproj"
 COPY . .
 WORKDIR "/src/CloudRestaurant.API"
-RUN dotnet build "CloudRestaurant.API.csproj" -c Release -o /app/build
+RUN dotnet build "CloudRestaurant.API.csproj" -c debug -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "CloudRestaurant.API.csproj" -c Release -o /app/publish
+RUN dotnet publish "CloudRestaurant.API.csproj" -c debug -o /app/publish
 
 FROM base AS final
 WORKDIR /app
